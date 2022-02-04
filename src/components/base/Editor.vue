@@ -3,12 +3,17 @@ import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import dragula from "dragula";
 import keyjs from "keyboardjs";
-import { addShell, applyWidth } from "../../assets/js/toolbox";
+import {
+  addShell,
+  applyWidth,
+  bindEditorSetting,
+} from "../../assets/js/toolbox";
 import config from "../../../yiya.config";
 import { nanoid } from "nanoid";
 let store = useStore();
 let componentsList = computed(() => store.state.loadList);
 onMounted(() => {
+  bindEditorSetting(store);
   let allowDrag = false;
   keyjs.bind(
     config.hotkeySettings.allow_drag_key,
@@ -56,7 +61,6 @@ onMounted(() => {
 
       new Promise((resolve, reject) => {
         addShell("beforebegin", el, sibling);
-
         resolve();
       }).then(() => {
         //垃圾回收

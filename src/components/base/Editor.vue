@@ -3,7 +3,7 @@ import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import dragula from "dragula";
 import keyjs from "keyboardjs";
-import { addShell } from "../../assets/js/toolbox";
+import { addShell, applyWidth } from "../../assets/js/toolbox";
 import config from "../../../yiya.config";
 import { nanoid } from "nanoid";
 let store = useStore();
@@ -38,12 +38,17 @@ onMounted(() => {
       if (source.innerHTML == "") {
         source.parentNode.removeChild(source);
       }
+      //宽度自适应
+      applyWidth(target);
     }
     if (source.childNodes.length >= 1 && target.id == "componentContainer") {
       //小容器进大容器
       console.log("小容器进入大容器");
       //添加外衣
       addShell("afterend", el, source);
+      //宽度自适应:恢复
+      applyWidth(source);
+      applyWidth(el.parentNode);
     }
     if (source.childNodes.length < 1 && target == source.parentNode) {
       //上下交换

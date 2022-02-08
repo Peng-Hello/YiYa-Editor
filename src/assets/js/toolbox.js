@@ -32,15 +32,16 @@ function applyWidth(target) {
 }
 
 function setCaret(el) {
+    if (el.childNodes[0] != undefined) {
+        let range = document.createRange()
+        let sel = window.getSelection()
 
-    let range = document.createRange()
-    let sel = window.getSelection()
+        range.setStart(el.childNodes[0], el.childNodes[0].length)
+        range.collapse(true)
 
-    range.setStart(el.childNodes[0], el.childNodes[0].length)
-    range.collapse(true)
-
-    sel.removeAllRanges()
-    sel.addRange(range)
+        sel.removeAllRanges()
+        sel.addRange(range)
+    }
 }
 
 //键盘绑定
@@ -85,22 +86,22 @@ function bindEditorSetting(store) {
                 let el = e.target.parentNode
                 //恢复聚焦
                 let childList = Array.from(document.getElementById("componentContainer").childNodes)
-                let position = childList.indexOf(el) - 1
-                childList[position].childNodes[0].focus()
-                //防止误删
-                new Promise((resolve, reject) => {
-                    setTimeout(() => {
-
-                        resolve()
-                    }, 100)
-                }).then(() => {
-                    setCaret(childList[position].childNodes[0])
-                })
-                //移除
-                el.parentNode.removeChild(el);
+                //判断是否是头节点
+                if (childList.length > 3) {
+                    let position = childList.indexOf(el) - 1
+                    childList[position].childNodes[0].focus()
+                    //防止误删
+                    new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve()
+                        }, 100)
+                    }).then(() => {
+                        setCaret(childList[position].childNodes[0])
+                    })
+                    //移除
+                    el.parentNode.removeChild(el);
+                }
             }
-
-
         }
     })
 

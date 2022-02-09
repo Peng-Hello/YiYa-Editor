@@ -30,6 +30,13 @@ function applyWidth(target) {
             target.clientWidth / childList.length + "px";
     }
 }
+//高度自适应
+function applyHigh(offset) {
+    let parentNode = document.getElementById('editor')
+    let childNode = document.getElementById('componentContainer')
+    parentNode.style.height = childNode.clientHeight + offset + 'px'
+
+}
 
 function setCaret(el) {
     if (el.childNodes[0] != undefined) {
@@ -62,6 +69,7 @@ function bindEditorSetting(store) {
             }
             focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
             childList[childList.length - 1].childNodes[0].focus()
+
         })
 
     })
@@ -86,6 +94,7 @@ function bindEditorSetting(store) {
                 let tempEl = e.target.parentNode
                 e.target.parentNode.removeChild(e.target);
                 applyWidth(tempEl)
+                applyHigh(600)
             } else {
                 let el = e.target.parentNode
                 //恢复聚焦
@@ -104,6 +113,7 @@ function bindEditorSetting(store) {
                     })
                     //移除
                     el.parentNode.removeChild(el);
+                    applyHigh(600)
                 }
             }
         }
@@ -116,5 +126,6 @@ function bindEditorSetting(store) {
 export {
     addShell,
     applyWidth,
+    applyHigh,
     bindEditorSetting
 }

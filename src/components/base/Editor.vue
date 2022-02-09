@@ -71,7 +71,6 @@ onMounted(() => {
         let childList = Array.from(
           document.getElementById("componentContainer").children
         );
-        console.log(childList);
         for (let index = 0; index < childList.length; index++) {
           if (childList[index].innerHTML == "") {
             childList[index].parentNode.removeChild(childList[index]);
@@ -85,7 +84,7 @@ onMounted(() => {
                 .getElementById("componentContainer")
                 .insertAdjacentHTML(
                   "beforeend",
-                  '<li class="no"><span></span></li>'
+                  '<li class="no h-10"><span></span></li>'
                 );
             }
           }
@@ -107,9 +106,9 @@ onMounted(() => {
     <div
       id="editor"
       class="w-2/4 grow shadow-xl bg-white mt-1 rounded-md p-5"
-      style="border-width: 1px"
+      style="border-width: 1px; height: 700px"
     >
-      <ul id="componentContainer" class="h-full">
+      <ul id="componentContainer">
         <keep-alive>
           <component
             v-for="(component, index) in componentsList"

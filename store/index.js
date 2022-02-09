@@ -1,6 +1,9 @@
 import {
     createStore
 } from 'vuex'
+import {
+    applyHigh
+} from '../src/assets/js/toolbox'
 import inputBox from '../src/components/base/InputBox.vue'
 import blank from '../src/components/base/blank.vue'
 const store = createStore({
@@ -14,6 +17,7 @@ const store = createStore({
     mutations: {
         ADD_COMPONENT(state, newValue) {
             state.loadList.push(newValue)
+            applyHigh(600)
         }
     },
     actions: {

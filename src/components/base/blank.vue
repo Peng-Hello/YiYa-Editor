@@ -1,3 +1,3 @@
 <template>
-  <li class="no"><span></span></li>
+  <li class="no h-10"><span></span></li>
 </template>

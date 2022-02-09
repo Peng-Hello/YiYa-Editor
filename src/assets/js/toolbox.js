@@ -10,7 +10,7 @@ function addShell(position, el, source) {
     const template =
         "<li id=" +
         rand_id +
-        ' class="w-full flex mb-2 dragula-container">' +
+        ' class="w-full flex mb-2 dragula-container newel">' +
         "</li>";
     if (source != null) {
         source.insertAdjacentHTML(position, template);
@@ -55,9 +55,13 @@ function bindEditorSetting(store) {
             resolve()
         }).then(() => {
             let focusEl = document.activeElement
-            let childList = Array.from(document.getElementById("componentContainer").childNodes)
-            focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 2])
-            childList[childList.length - 2].childNodes[0].focus()
+            let temp = document.getElementById("componentContainer").children
+            let childList = [];
+            for (let i = 0; i < temp.length; i++) {
+                childList.push(temp[i])
+            }
+            focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
+            childList[childList.length - 1].childNodes[0].focus()
         })
 
     })

@@ -2,10 +2,10 @@ import {
     createStore
 } from 'vuex'
 import inputBox from '../src/components/base/InputBox.vue'
-
+import blank from '../src/components/base/blank.vue'
 const store = createStore({
     state: {
-        loadList: [inputBox, inputBox, inputBox],
+        loadList: [inputBox, inputBox, inputBox, blank],
         allowEdit: true
     },
     getters: {
@@ -13,9 +13,7 @@ const store = createStore({
     },
     mutations: {
         ADD_COMPONENT(state, newValue) {
-
             state.loadList.push(newValue)
-
         }
     },
     actions: {

@@ -1,3 +1,3 @@
 <template>
-  <li><span></span></li>
+  <li class="no"><span></span></li>
 </template>

@@ -31,6 +31,9 @@ onMounted(() => {
     moves: function (el, source, handle, sibling) {
       return allowDrag;
     },
+    invalid: function (el, handle) {
+      return el.classList.contains("no");
+    },
   }).on("drop", (el, target, source, sibling) => {
     //用户操作分类讨论
     if (
@@ -65,11 +68,26 @@ onMounted(() => {
       }).then(() => {
         //垃圾回收
         //可以考虑加一个垃圾回收类gc
-        let childList =
-          document.getElementById("componentContainer").childNodes;
+        let childList = Array.from(
+          document.getElementById("componentContainer").children
+        );
+        console.log(childList);
         for (let index = 0; index < childList.length; index++) {
           if (childList[index].innerHTML == "") {
             childList[index].parentNode.removeChild(childList[index]);
+          }
+          //精准放置
+          if (childList[index].classList.contains("no")) {
+            let p = childList.indexOf(childList[index]);
+            if (p != childList.length - 1) {
+              childList[index].parentNode.removeChild(childList[index]);
+              document
+                .getElementById("componentContainer")
+                .insertAdjacentHTML(
+                  "beforeend",
+                  '<li class="no"><span></span></li>'
+                );
+            }
           }
         }
         //end

@@ -35,7 +35,6 @@ function applyHigh(offset) {
     let parentNode = document.getElementById('editor')
     let childNode = document.getElementById('componentContainer')
     parentNode.style.height = childNode.clientHeight + offset + 'px'
-
 }
 
 function setCaret(el) {
@@ -49,6 +48,14 @@ function setCaret(el) {
         sel.removeAllRanges()
         sel.addRange(range)
     }
+}
+//浏览器尺寸变化宽度自适应
+function windowsWidthApply() {
+    window.addEventListener('resize', () => {
+        Array.from(document.getElementById('componentContainer').children, (item) => {
+            applyWidth(item)
+        })
+    })
 }
 
 //键盘绑定
@@ -174,8 +181,9 @@ export {
     addShell,
     applyWidth,
     applyHigh,
+    windowsWidthApply,
     bindEditorSetting,
     bindcommand,
     bindSave,
-    loadData
+    loadData,
 }

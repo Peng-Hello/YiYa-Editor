@@ -6,6 +6,7 @@ import keyjs from "keyboardjs";
 import {
   addShell,
   applyWidth,
+  windowsWidthApply,
   bindEditorSetting,
   bindcommand,
   bindSave,
@@ -20,7 +21,7 @@ onMounted(() => {
   bindEditorSetting(store);
   bindcommand();
   bindSave();
-
+  windowsWidthApply();
   let allowDrag = false;
   keyjs.bind(
     config.hotkeySettings.allow_drag_key,

@@ -7,13 +7,20 @@ import {
   addShell,
   applyWidth,
   bindEditorSetting,
+  bindcommand,
+  bindSave,
+  loadData,
 } from "../../assets/js/toolbox";
 import config from "../../../yiya.config";
 import { nanoid } from "nanoid";
 let store = useStore();
 let componentsList = computed(() => store.state.loadList);
+
 onMounted(() => {
   bindEditorSetting(store);
+  bindcommand();
+  bindSave();
+
   let allowDrag = false;
   keyjs.bind(
     config.hotkeySettings.allow_drag_key,
@@ -24,11 +31,16 @@ onMounted(() => {
       allowDrag = false;
     }
   );
+  keyjs.bind("ctrl+r", (e) => {
+    e.preventDefault();
+    store.commit("SET_ALLOWEDIT");
+  });
   dragula([document.getElementById("componentContainer")], {
     isContainer: function (el) {
       return el.classList.contains("dragula-container");
     },
     moves: function (el, source, handle, sibling) {
+      let result = allowDrag & handle.classList.contains("canmove");
       return allowDrag;
     },
     invalid: function (el, handle) {

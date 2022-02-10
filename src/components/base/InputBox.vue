@@ -7,7 +7,11 @@ let rand_id = nanoid();
 let allowEdit = computed(() => store.state.allowEdit);
 </script>
 <template>
-  <li :id="rand_id" ref="input_li" class="w-full flex mb-2 dragula-container">
+  <li
+    :id="rand_id"
+    ref="input_li"
+    class="w-full flex space-x-2 mb-2 dragula-container"
+  >
     <div
       class="w-full inline-block outline-none bg-red-300"
       :contenteditable="allowEdit"

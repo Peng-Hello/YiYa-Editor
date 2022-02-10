@@ -27,7 +27,7 @@ function applyWidth(target) {
     let childList = target.childNodes;
     for (let index = 0; index < childList.length; index++) {
         childList[index].style.width =
-            target.clientWidth / childList.length + "px";
+            (target.clientWidth / childList.length) - (childList.length - 1) * 8 + "px";
     }
 }
 //高度自适应
@@ -69,7 +69,6 @@ function bindEditorSetting(store) {
             }
             focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
             childList[childList.length - 1].childNodes[0].focus()
-
         })
 
     })
@@ -98,34 +97,85 @@ function bindEditorSetting(store) {
             } else {
                 let el = e.target.parentNode
                 //恢复聚焦
-                let childList = Array.from(document.getElementById("componentContainer").childNodes)
+                let childList = Array.from(document.getElementById("componentContainer").children)
+
                 //判断是否是头节点
-                if (childList.length > 3) {
+                if (childList.length > 2) {
                     let position = childList.indexOf(el) - 1
-                    childList[position].childNodes[0].focus()
-                    //防止误删
-                    new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            resolve()
-                        }, 100)
-                    }).then(() => {
-                        setCaret(childList[position].childNodes[0])
-                    })
-                    //移除
-                    el.parentNode.removeChild(el);
-                    applyHigh(600)
+
+                    if (typeof (childList[position]) !== 'undefined') {
+                        childList[position].childNodes[0].focus()
+                        //防止误删
+                        new Promise((resolve, reject) => {
+                            setTimeout(() => {
+                                resolve()
+                            }, 100)
+                        }).then(() => {
+                            setCaret(childList[position].childNodes[0])
+                        })
+                        //移除
+                        el.parentNode.removeChild(el);
+                        applyHigh(600)
+                    }
                 }
             }
         }
     })
-
-
 }
 //execommand 绑定
+function bindcommand() {
+    let settingList = config.hotkeySettings.base
+    for (let index = 0; index < settingList.length; index++) {
+        let element = settingList[index];
+        let cmd = element.cmd
+        let valList = element.valList
+        let hotKey = element.hotKey
+        if (typeof (valList) == 'undefined') {
+            keyboardjs.bind(hotKey, (e) => {
+                e.preventDefault()
+                document.execCommand(cmd)
+            })
+        } else {
+            //多个值
+            for (let i = 0; i < valList.length; i++) {
+                let val = valList[i];
+                keyboardjs.bind(hotKey[i], (e) => {
+                    e.preventDefault()
+                    document.execCommand(cmd, false, val)
+                })
+            }
+
+        }
+
+    }
+}
+
+
+//保存
+function bindSave() {
+    keyboardjs.bind('ctrl+s', (e) => {
+        e.preventDefault()
+        alert(saveData())
+    })
+}
+
+function saveData() {
+    let data = document.getElementById('componentContainer').innerHTML
+    data = data.slice(0, -38)
+    return data
+}
+
+function loadData(data) {
+    const el = document.getElementById('componentContainer')
+    el.insertAdjacentHTML('afterbegin', data)
+}
 //插件绑定
 export {
     addShell,
     applyWidth,
     applyHigh,
-    bindEditorSetting
+    bindEditorSetting,
+    bindcommand,
+    bindSave,
+    loadData
 }

@@ -18,6 +18,9 @@ const store = createStore({
         ADD_COMPONENT(state, newValue) {
             state.loadList.push(newValue)
             applyHigh(600)
+        },
+        SET_ALLOWEDIT(state) {
+            state.allowEdit = !state.allowEdit
         }
     },
     actions: {

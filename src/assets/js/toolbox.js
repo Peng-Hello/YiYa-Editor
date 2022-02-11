@@ -3,6 +3,9 @@ import {
 } from 'nanoid'
 import config from '../../../yiya.config'
 import keyboardjs from 'keyboardjs';
+import {
+    loadderComponent
+} from './componentsLoadder'
 import inputBox from '../../components/base/InputBox.vue'
 //给拖动的元素添加"外壳"
 function addShell(position, el, source) {
@@ -64,19 +67,38 @@ function bindEditorSetting(store) {
     //增
     keyboardjs.bind('enter+shift', (e) => {
         e.preventDefault()
-        new Promise((resolve, reject) => {
-            store.commit('ADD_COMPONENT', inputBox)
-            resolve()
-        }).then(() => {
-            let focusEl = document.activeElement
-            let temp = document.getElementById("componentContainer").children
-            let childList = [];
-            for (let i = 0; i < temp.length; i++) {
-                childList.push(temp[i])
-            }
-            focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
-            childList[childList.length - 1].childNodes[0].focus()
-        })
+        if (e.target.innerHTML[0] != '/') {
+            new Promise((resolve, reject) => {
+                store.commit('ADD_COMPONENT', inputBox)
+                resolve()
+            }).then(() => {
+                let focusEl = document.activeElement
+                let temp = document.getElementById("componentContainer").children
+                let childList = [];
+                for (let i = 0; i < temp.length; i++) {
+                    childList.push(temp[i])
+                }
+                focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
+                childList[childList.length - 1].childNodes[0].focus()
+            })
+        } else {
+            //命令解析模式
+            let cmd = e.target.innerHTML.substring(1)
+            new Promise((resolve, reject) => {
+                loadderComponent(cmd, store)
+                resolve()
+            }).then(() => {
+                let focusEl = document.activeElement
+                let temp = document.getElementById("componentContainer").children
+                let childList = [];
+                for (let i = 0; i < temp.length; i++) {
+                    childList.push(temp[i])
+                }
+                focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
+                focusEl.parentNode.parentNode.removeChild(focusEl.parentNode);
+            })
+            //end
+        }
 
     })
     //删

@@ -47,6 +47,7 @@ onMounted(() => {
     invalid: function (el, handle) {
       return el.classList.contains("no");
     },
+    ignoreInputTextSelection: true,
   }).on("drop", (el, target, source, sibling) => {
     //用户操作分类讨论
     if (

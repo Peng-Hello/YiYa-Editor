@@ -85,8 +85,13 @@ function bindEditorSetting(store) {
             //命令解析模式
             let cmd = e.target.innerHTML.substring(1)
             new Promise((resolve, reject) => {
-                loadderComponent(cmd, store)
-                resolve()
+                let find_cmd = loadderComponent(cmd, store)
+                if (find_cmd) {
+                    resolve()
+                } else {
+                    alert('命令找不到！')
+                }
+
             }).then(() => {
                 let focusEl = document.activeElement
                 let temp = document.getElementById("componentContainer").children
@@ -109,20 +114,22 @@ function bindEditorSetting(store) {
                 //并列情况
                 let childList = e.target.parentNode.childNodes
                 let position = Array.from(childList).indexOf(e.target) - 1
-                childList[position].focus()
-                new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        resolve()
-                    }, 100)
+                if (typeof (childList[position]) != 'undefined') {
+                    childList[position].focus()
+                    new Promise((resolve, reject) => {
+                        setTimeout(() => {
+                            resolve()
+                        }, 100)
 
-                }).then(() => {
-                    setCaret(childList[position])
-                })
-                //移除
-                let tempEl = e.target.parentNode
-                e.target.parentNode.removeChild(e.target);
-                applyWidth(tempEl)
-                applyHigh(600)
+                    }).then(() => {
+                        setCaret(childList[position])
+                    })
+                    //移除
+                    let tempEl = e.target.parentNode
+                    e.target.parentNode.removeChild(e.target);
+                    applyWidth(tempEl)
+                    applyHigh(600)
+                }
             } else {
                 let el = e.target.parentNode
                 //恢复聚焦
@@ -208,4 +215,5 @@ export {
     bindcommand,
     bindSave,
     loadData,
+    setCaret
 }

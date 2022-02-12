@@ -41,8 +41,13 @@ onMounted(() => {
       return el.classList.contains("dragula-container");
     },
     moves: function (el, source, handle, sibling) {
-      let result = allowDrag & handle.classList.contains("canmove");
-      return allowDrag;
+      let result = false;
+      if (!el.classList.contains("no_inputBox")) {
+        result = allowDrag;
+      } else {
+        result = handle.classList.contains("handle");
+      }
+      return result;
     },
     invalid: function (el, handle) {
       return el.classList.contains("no");

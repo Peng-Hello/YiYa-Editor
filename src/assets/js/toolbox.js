@@ -4,6 +4,9 @@ import {
 import config from '../../../yiya.config'
 import keyboardjs from 'keyboardjs';
 import {
+    encoder
+} from './encoder'
+import {
     loadderComponent
 } from './componentsLoadder'
 import inputBox from '../../components/base/InputBox.vue'
@@ -30,7 +33,7 @@ function applyWidth(target) {
     let childList = target.childNodes;
     for (let index = 0; index < childList.length; index++) {
         childList[index].style.width =
-            (target.clientWidth / childList.length) - (childList.length - 1) * 8 + "px";
+            (target.clientWidth / childList.length) + "px";
     }
 }
 //高度自适应
@@ -73,13 +76,15 @@ function bindEditorSetting(store) {
                 resolve()
             }).then(() => {
                 let focusEl = document.activeElement
-                let temp = document.getElementById("componentContainer").children
-                let childList = [];
-                for (let i = 0; i < temp.length; i++) {
-                    childList.push(temp[i])
+                if (focusEl.classList.contains('input_div')) {
+                    let temp = document.getElementById("componentContainer").children
+                    let childList = [];
+                    for (let i = 0; i < temp.length; i++) {
+                        childList.push(temp[i])
+                    }
+                    focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
+                    childList[childList.length - 1].childNodes[0].focus()
                 }
-                focusEl.parentNode.insertAdjacentElement('afterend', childList[childList.length - 1])
-                childList[childList.length - 1].childNodes[0].focus()
             })
         } else {
             //命令解析模式
@@ -192,6 +197,7 @@ function bindSave() {
     keyboardjs.bind('ctrl+s', (e) => {
         e.preventDefault()
         alert(saveData())
+        encoder()
     })
 }
 

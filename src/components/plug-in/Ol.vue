@@ -21,7 +21,7 @@ function reset_click() {}
 </script>
 <template>
   <li :id="rand_id" ref="input_li" class="w-full flex mb-2 dragula-container">
-    <div class="w-full no_inputBox flex flex-grow space-x-6">
+    <div class="w-full no_inputBox flex flex-grow space-x-6 com-ol drag">
       <p
         ref="ctrl_plane"
         v-show="show"
@@ -38,7 +38,13 @@ function reset_click() {}
         ></ion-icon>
       </p>
       <!-- 正文 -->
-      <div ref="content" class="flex-grow h-full"></div>
+      <div ref="content" class="flex-grow h-full savePart">
+        <div contenteditable="true" class="outline-none h-full w-full">
+          <ol class="list-decimal">
+            <li></li>
+          </ol>
+        </div>
+      </div>
     </div>
   </li>
 </template>

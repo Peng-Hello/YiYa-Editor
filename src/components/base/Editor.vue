@@ -3,6 +3,7 @@ import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 import dragula from "dragula";
 import keyjs from "keyboardjs";
+import { decoder } from "../../assets/js/decoder";
 import {
   addShell,
   applyWidth,
@@ -18,6 +19,7 @@ let store = useStore();
 let componentsList = computed(() => store.state.loadList);
 
 onMounted(() => {
+  decoder(store);
   bindEditorSetting(store);
   bindcommand();
   bindSave();

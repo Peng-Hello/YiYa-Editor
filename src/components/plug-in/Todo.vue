@@ -38,7 +38,11 @@ function reset_click() {}
         ></ion-icon>
       </p>
       <!-- 正文 -->
-      <div ref="content" class="flex-grow h-full"></div>
+      <div ref="content" class="flex-grow h-full">
+        <div contenteditable="true" class="outline-none h-full w-full">
+          <input type="checkbox" />
+        </div>
+      </div>
     </div>
   </li>
 </template>

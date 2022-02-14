@@ -25,10 +25,10 @@ onMounted(() => {
 });
 </script>
 <template>
-  <li :id="rand_id" class="w-full flex space-x-2 mb-2 dragula-container">
+  <li :id="rand_id" class="w-full flex mb-2 dragula-container">
     <div
       ref="input_div"
-      class="w-full inline-block outline-none flex-grow"
+      class="w-full inline-block outline-none flex-grow input_div savePart com-inputbox drag"
       :contenteditable="allowEdit"
     ></div>
   </li>

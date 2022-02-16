@@ -25,7 +25,7 @@ function reset_click() {}
       <p
         ref="ctrl_plane"
         v-show="show"
-        class="shadow-md rounded-md bg-white flex items-center flex-grow-0 space-x-1 w-16 justify-center"
+        class="shadow-md rounded-md bg-white flex items-center com-ol flex-grow-0 space-x-1 w-16 justify-center"
       >
         <ion-icon name="hand-left-outline" class="handle"></ion-icon
         ><ion-icon

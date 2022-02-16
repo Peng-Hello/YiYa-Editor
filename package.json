@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ptest":"vite build && vite preview"
   },
   "dependencies": {
     "dragula": "^3.7.3",

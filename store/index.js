@@ -20,6 +20,7 @@ const store = createStore({
             state.loadList.push(newValue)
             applyHigh(600)
 
+
         },
         SET_ALLOWEDIT(state) {
             state.allowEdit = !state.allowEdit

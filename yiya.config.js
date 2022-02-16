@@ -4,31 +4,25 @@ export default {
         base: [{
             cmd: 'backColor',
             valList: ['orange', 'crimson', 'deepskyblue', 'yellow'],
-            hotKey: ['shift+o', 'shift+r', 'shift+b', 'shift+y']
+            hotKey: ['alt+o', 'alt+r', 'alt+b', 'alt+y']
         }, {
             cmd: 'bold',
             hotKey: 'ctrl+b'
         }, {
             cmd: 'italic',
-            hotKey: 'shift+i'
+            hotKey: 'ctrl+i'
         }, {
             cmd: 'removeFormat',
             hotKey: 'shift+space'
         }, {
             cmd: 'strikeThrough',
-            hotKey: 'shift+d'
+            hotKey: 'alt+d'
         }, {
             cmd: 'createLink',
-            hotKey: 'shift+h'
-        }, {
-            cmd: 'insertOrderedList',
-            hotKey: 'shift+j'
-        }, {
-            cmd: 'insertUnorderedList',
-            hotKey: 'shift+k'
+            hotKey: 'ctrl+h'
         }, {
             cmd: 'underline',
-            hotKey: 'shift+u'
+            hotKey: 'alt+u'
         }, {
             cmd: 'justifyLeft',
             hotKey: 'ctrl+j'

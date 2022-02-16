@@ -5,6 +5,7 @@ import {
     loadderComponent
 } from './componentsLoadder'
 import inputbox from '../../components/base/InputBox.vue'
+import blank from './../../components/base/blank.vue'
 
 function garbageCollection() {
     let childList = document.getElementById('componentContainer').children
@@ -62,6 +63,7 @@ function decoder(store) {
         }
         //垃圾回收
         garbageCollection()
+        store.commit('ADD_COMPONENT', blank)
 
     })
 

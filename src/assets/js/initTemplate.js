@@ -84,6 +84,7 @@ function init_del_btn(e) {
     //上下情况
     else {
         function down_find_focus(el) {
+
             if (el.nextSibling.children[0].tagName != "span") {
                 if (el.nextSibling.children[0].classList.contains("no_inputBox")) {
                     el = el.nextSibling;

@@ -12,10 +12,7 @@
       style="left: 20%"
     >
       <div class="text-7xl">😀</div>
-      <div class="ml-6">
-        <h1 class="text-white font-bold text-3xl">Title</h1>
-        <h2 class="text-white font-bold">2022.01.24</h2>
-      </div>
+      <div class="ml-6"></div>
     </div>
   </div>
 </template>

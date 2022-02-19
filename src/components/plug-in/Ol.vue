@@ -16,6 +16,7 @@ onMounted(() => {
 function del_click(e) {
   init_del_btn(e);
 }
+
 //重置事件
 function reset_click() {}
 </script>

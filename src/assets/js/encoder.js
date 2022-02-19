@@ -9,11 +9,10 @@ function class_lookUp(el_classList) {
 }
 
 function savePart_lookUp(row_el, structureTemplate) {
-    console.dir(row_el);
+    // console.dir(row_el);
     if (row_el.classList.contains('savePart')) {
         structureTemplate.savePart = row_el.innerHTML
     } else {
-
         structureTemplate.savePart = row_el.querySelectorAll('.savePart')[0].innerHTML
     }
 }
@@ -23,7 +22,8 @@ function encoder() {
     let data = {
         dataList: []
     }
-    for (let i = 0; i < childList.length; i++) {
+    //-1是为了忽略最后的span标签
+    for (let i = 0; i < childList.length - 1; i++) {
         const el = childList[i]
         let structureTemplate = {
             component: '',
@@ -64,6 +64,7 @@ function encoder() {
             if (com_name != null) {
                 structureTemplate.component = com_name
             }
+
             savePart_lookUp(el.children[0], structureTemplate)
             templateList.push(structureTemplate)
         }

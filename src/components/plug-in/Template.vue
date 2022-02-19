@@ -2,8 +2,9 @@
 import { ref, onMounted } from "vue";
 import { nanoid } from "nanoid";
 import { bind_plane_show, init_del_btn } from "../../assets/js/initTemplate";
-
+import { asynchronously, getSelect } from "../../assets/js/asynchronously";
 let rand_id = nanoid();
+let idCard = nanoid();
 let show = ref(false);
 let ctrl_plane = ref(null);
 let content = ref(null);
@@ -14,18 +15,30 @@ onMounted(() => {
 });
 //删除事件
 function del_click(e) {
+  //have a last bug
   init_del_btn(e);
 }
+
 //重置事件
 function reset_click() {}
+onMounted(() => {
+  asynchronously(() => {
+    let el = getSelect(idCard, "#box");
+    console.log(el);
+    el.style.width = el.parentNode.clientWidth * 0.75 + "px";
+  });
+});
 </script>
 <template>
   <li :id="rand_id" ref="input_li" class="w-full flex mb-2 dragula-container">
-    <div class="w-full no_inputBox flex flex-grow space-x-6">
+    <div
+      :id="idCard"
+      class="w-full no_inputBox flex flex-grow com-interval drag"
+    >
       <p
         ref="ctrl_plane"
         v-show="show"
-        class="shadow-md rounded-md bg-white flex items-center flex-grow-0 space-x-1 w-16 justify-center"
+        class="shadow-md rounded-md bg-white flex items-center com-interval flex-grow-0 space-x-1 w-16 justify-center mr-6"
       >
         <ion-icon name="hand-left-outline" class="handle"></ion-icon
         ><ion-icon
@@ -38,7 +51,7 @@ function reset_click() {}
         ></ion-icon>
       </p>
       <!-- 正文 -->
-      <div ref="content" class="flex-grow h-full"></div>
+      <div ref="content" class="flex-grow h-full savePart"></div>
     </div>
   </li>
 </template>

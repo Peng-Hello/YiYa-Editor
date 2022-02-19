@@ -15,17 +15,14 @@ onMounted(() => {
 });
 //删除事件
 function del_click(e) {
-  //have a last bug
   init_del_btn(e);
 }
 
-//重置事件
+//点击重置按钮事件
 function reset_click() {}
 onMounted(() => {
   asynchronously(() => {
     let el = getSelect(idCard, "#box");
-    console.log(el);
-    el.style.width = el.parentNode.clientWidth * 0.75 + "px";
   });
 });
 </script>
@@ -33,12 +30,12 @@ onMounted(() => {
   <li :id="rand_id" ref="input_li" class="w-full flex mb-2 dragula-container">
     <div
       :id="idCard"
-      class="w-full no_inputBox flex flex-grow com-interval drag"
+      class="w-full no_inputBox flex flex-grow com-template drag"
     >
       <p
         ref="ctrl_plane"
         v-show="show"
-        class="shadow-md rounded-md bg-white flex items-center com-interval flex-grow-0 space-x-1 w-16 justify-center mr-6"
+        class="shadow-md rounded-md bg-white flex items-center com-template flex-grow-0 space-x-1 w-16 justify-center mr-6"
       >
         <ion-icon name="hand-left-outline" class="handle"></ion-icon
         ><ion-icon

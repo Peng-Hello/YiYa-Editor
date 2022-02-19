@@ -1,22 +1,63 @@
 <p align="center">
 <a href="https://peng-hello.github.io/YiYaDemo/">
-<img src="./img/logo2.png">
+<img src="./readme_src/logo2.png">
 </a>
 </p>
 
-# 一. 简介
+[English version](./readme_src/en.md)
+
+# 一. 介绍
 
 YiYa 编辑器是使用 Vite+Vue3+Tailwind 来构建的一款开源的编辑器。适用于模块化笔记，博客文章的撰写。它不同于传统的富文本编辑器。它的主要的好处在于支持拖拽（快速，灵活的布局），自定义组件（满足各种工作场景）。它的设计灵感主要来自于 Notion 。
 
 # 二. Demo 展示
 
-![Demo 展示](./img/demo.gif)
+![Demo 展示](./readme_src/demo.gif)
 
 # 三. 在线 Demo
 
-https://peng-hello.github.io/YiYaDome/
+https://peng-hello.github.io/YiYaDemo/
 
 # 四. 项目结构
+
+```shell
+|-- YiYa
+    |-- README.md
+    |-- tailwind.config.js
+    |-- vite.config.js
+    |-- yiya.config.js
+    |-- readme_src #README Src
+    |   |-- demo.gif
+    |   |-- logo.png
+    |   |-- logo2.png
+    |-- public
+    |   |-- favicon.ico
+    |-- src
+    |   |-- App.vue
+    |   |-- main.js
+    |   |-- assets # 静态资源
+    |   |   |-- logo.png
+    |   |   |-- js
+    |   |       |-- asynchronously.js # 主要为了可以在自定义组件里写Javascript
+    |   |       |-- componentsLoadder.js #用于加载组件到页面
+    |   |       |-- decoder.js # 对保存的数据进行解码
+    |   |       |-- encoder.js # 对页面资料进行编码，方便保存
+    |   |       |-- initTemplate.js # 初始化自定义组件
+    |   |       |-- testdata.js # 保存的页面数据
+    |   |       |-- toolbox.js # 封装了一些常用函数
+    |   |-- components
+    |       |-- base # 编辑器基础组件
+    |       |   |-- blank.vue # 这个要初始化时加载在底部，防止最后一个元素上下拖动发生错误
+    |       |   |-- Decorate.vue # Banner 组件
+    |       |   |-- Editor.vue # 编辑器主体
+    |       |   |-- InputBox.vue # 命令输入块
+    |       |-- plug-in # 自定义组件
+    |           |-- Interval.vue # 居中块
+    |           |-- Ol.vue # 有序列表
+    |           |-- Template.vue # 自定义组件参考模板
+    |-- store
+        |-- index.js
+```
 
 # 五. 安装&构建
 

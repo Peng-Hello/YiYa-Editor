@@ -48,7 +48,7 @@ npm run ptest
 
 # 六. 快速开始
 
-见在线 Demo https://peng-hello.github.io/YiYaDome/
+见在线 Demo https://peng-hello.github.io/YiYaDemo/
 
 # 七. 怎么样开发自定义组件
 

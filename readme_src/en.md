@@ -9,19 +9,19 @@
 </p>
 </p>
 
-# 一. Introduce
+# 1. Introduce
 
 YiYa editor is an open source editor built with Vite+Vue3+Tailwind. Suitable for modular notes, blog post writing. It is different from traditional rich text editors. Its main benefit is to support drag and drop (fast, flexible layout), custom components (to meet various work scenarios). Its design inspiration mainly comes from Notion.
 
-# 二. Demo Preview
+# 2. Demo Preview
 
 ![Demo](./demo.gif)
 
-# 三. Online Demo
+# 3. Online Demo
 
 https://peng-hello.github.io/YiYaDemo/
 
-# 四. Project Structure
+# 4. Project Structure
 
 ```shell
 |-- YiYa
@@ -62,7 +62,7 @@ https://peng-hello.github.io/YiYaDemo/
         |-- index.js
 ```
 
-# 五. Install & Build
+# 5. Install & Build
 
 ### Install
 
@@ -90,11 +90,11 @@ npm run preview
 npm run ptest
 ```
 
-# 六. Quick Start
+# 6. Quick Start
 
 See online demo https://peng-hello.github.io/YiYaDemo/
 
-# 七. How to develop custom components
+# 7. How to develop custom components
 
 ### Note: Due to various trade-offs, the programming here may be somewhat different from the previous programming.
 
@@ -151,7 +151,7 @@ onMounted(() => {
 });
 ```
 
-# 八. Update log
+# 8. Update log
 
 - Added change text color
 - You can add hyperlinks to selected text (still to be improved)

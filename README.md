@@ -5,6 +5,7 @@
 <p>
 <img src="https://img.shields.io/badge/build-passing-brightgreen">
 <img src="https://img.shields.io/github/license/Peng-Hello/YiYa-Editor">
+<img src="https://img.shields.io/badge/version-v1.1-blue">
 </p>
 </p>
 

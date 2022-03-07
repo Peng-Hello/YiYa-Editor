@@ -5,6 +5,7 @@
 <p>
 <img src="https://img.shields.io/badge/build-passing-brightgreen">
 <img src="https://img.shields.io/github/license/Peng-Hello/YiYa-Editor">
+<img src="https://img.shields.io/badge/version-v1.1-blue">
 </p>
 </p>
 
@@ -149,3 +150,9 @@ onMounted(() => {
   });
 });
 ```
+
+# 八. Update log
+
+- Added change text color
+- You can add hyperlinks to selected text (still to be improved)
+- Added the function of up and down corner markers

@@ -12,7 +12,18 @@
       style="left: 20%"
     >
       <div class="text-7xl">😀</div>
-      <div class="ml-6"></div>
+      <div class="ml-6">
+        <input
+          id="title"
+          type="text"
+          class="outline-none bg-transparent text-3xl text-white"
+        />
+        <input
+          id="tag"
+          type="text"
+          class="outline-none bg-transparent text-xs text-white"
+        />
+      </div>
     </div>
   </div>
 </template>

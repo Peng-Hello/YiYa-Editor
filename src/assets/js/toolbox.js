@@ -172,10 +172,25 @@ function bindcommand() {
         let valList = element.valList
         let hotKey = element.hotKey
         if (typeof (valList) == 'undefined') {
-            keyboardjs.bind(hotKey, (e) => {
-                e.preventDefault()
-                document.execCommand(cmd)
-            })
+            if (cmd != 'createLink') {
+                keyboardjs.bind(hotKey, (e) => {
+                    e.preventDefault()
+                    document.execCommand(cmd)
+                })
+            } else {
+                //createLink fuction
+                keyboardjs.bind(hotKey, (e) => {
+                    e.preventDefault()
+                    let showTable = prompt("输入你的超链接:", "");
+                    let url = "";
+                    if (showTable == null || showTable == "") {
+                        console.log("未输入链接操作取消！");
+                    } else {
+                        url = showTable;
+                        document.execCommand(cmd, false, url)
+                    }
+                })
+            }
         } else {
             //多个值
             for (let i = 0; i < valList.length; i++) {

@@ -19,7 +19,7 @@ let store = useStore();
 let componentsList = computed(() => store.state.loadList);
 
 onMounted(() => {
-  decoder(store);
+  // decoder(store);
   bindEditorSetting(store);
   bindcommand();
   bindSave();

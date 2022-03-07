@@ -2,6 +2,10 @@
 <a href="https://peng-hello.github.io/YiYaDemo/">
 <img src="./readme_src/logo2.png">
 </a>
+<p>
+<img src="https://img.shields.io/badge/build-passing-brightgreen">
+<img src="https://img.shields.io/github/license/Peng-Hello/YiYa-Editor">
+</p>
 </p>
 
 [English version](./readme_src/en.md)
@@ -147,3 +151,9 @@ onMounted(() => {
   });
 });
 ```
+
+# 八. 更新日志
+
+- 增加了更改文字颜色
+- 可以对选中的文字添加超链接（有待完善）
+- 增加上下角标功能

@@ -26,7 +26,7 @@ function reset_click() {}
       <p
         ref="ctrl_plane"
         v-show="show"
-        class="shadow-md rounded-md bg-white flex items-center com-ol flex-grow-0 space-x-1 w-16 justify-center"
+        class="shadow-md rounded-md bg-white flex items-center com-ol flex-grow-0 space-x-1 justify-center"
       >
         <ion-icon name="hand-left-outline" class="handle"></ion-icon
         ><ion-icon
@@ -41,9 +41,9 @@ function reset_click() {}
       <!-- 正文 -->
       <div ref="content" class="flex-grow h-full savePart">
         <div contenteditable="true" class="outline-none h-full w-full">
-          <ol class="list-decimal">
+          <ul class="list-decimal">
             <li></li>
-          </ol>
+          </ul>
         </div>
       </div>
     </div>

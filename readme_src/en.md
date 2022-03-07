@@ -2,6 +2,10 @@
 <a href="https://peng-hello.github.io/YiYaDemo/">
 <img src="./logo2.png">
 </a>
+<p>
+<img src="https://img.shields.io/badge/build-passing-brightgreen">
+<img src="https://img.shields.io/github/license/Peng-Hello/YiYa-Editor">
+</p>
 </p>
 
 # 一. Introduce

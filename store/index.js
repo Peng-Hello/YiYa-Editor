@@ -9,7 +9,11 @@ import blank from '../src/components/base/blank.vue'
 const store = createStore({
     state: {
         loadList: [inputBox, inputBox, blank],
-
+        postdata: {
+            tag: '',
+            title: '',
+            passage: ''
+        },
         allowEdit: true
     },
     getters: {
@@ -25,6 +29,15 @@ const store = createStore({
         },
         SET_INITLIST(state) {
             state.loadList = []
+        },
+        SET_POST_TAG(state, val) {
+            state.postdata.tag = val
+        },
+        SET_POST_TITLE(state, val) {
+            state.postdata.title = val
+        },
+        SET_POST_PASSAGE(state, val) {
+            state.postdata.passage = val
         }
     },
     actions: {

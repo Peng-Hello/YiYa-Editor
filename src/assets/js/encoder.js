@@ -72,7 +72,23 @@ function encoder() {
     }
 
     let d = JSON.stringify(data)
-    console.log(d);
+    // console.log(d);
+    let title = document.getElementById('title').value
+    let tag = document.getElementById('tag').value
+    fetch('http://121.37.90.57:8000/postdata', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tag: tag,
+                title: title,
+                passage: d
+            })
+        })
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
     console.log(data);
 }
 export {

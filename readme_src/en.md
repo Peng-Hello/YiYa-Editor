@@ -156,3 +156,5 @@ onMounted(() => {
 - Added change text color
 - You can add hyperlinks to selected text (still to be improved)
 - Added the function of up and down corner markers
+- Added code block plugins to support code highlighting (refresh button can be refreshed). Command `'/code'`
+- Fixed some mobile interface display bugs

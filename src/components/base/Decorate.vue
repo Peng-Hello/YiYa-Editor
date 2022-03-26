@@ -3,9 +3,9 @@
   <!-- banner -->
   <div class="w-full h-44 relative">
     <img
-      src="https://api.r10086.com/动漫综合1.php"
+      src="http://121.37.90.57:3000/api/random/img"
       alt=""
-      class="sm:h-full sm:w-full sm:object-cover absolute"
+      class="min-w-full w-full sm:h-full sm:w-full sm:object-cover absolute"
     />
     <div
       class="absolute sm:-bottom-3.5 -bottom-1/3 w-2/3 flex"
@@ -16,7 +16,7 @@
         <input
           id="title"
           type="text"
-          class="outline-none bg-transparent text-3xl text-white"
+          class="outline-none bg-transparent sm:text-3xl text-white w-3/4 text-xl"
         />
         <input
           id="tag"

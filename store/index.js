@@ -6,6 +6,7 @@ import {
 } from '../src/assets/js/toolbox'
 import inputBox from '../src/components/base/InputBox.vue'
 import blank from '../src/components/base/blank.vue'
+
 const store = createStore({
     state: {
         loadList: [inputBox, inputBox, blank],
